@@ -1,1 +1,0 @@
-layout dapat dibuat dengan prompt yang lebih detail seperti memposisikan konten dalam tabel untuk menentukan posisi presisisnya
