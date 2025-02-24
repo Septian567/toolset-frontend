@@ -1,0 +1,44 @@
+@use '../utilities/variables' as *;
+@use '../utilities/mixins' as *;
+
+.offcanvas {
+    background-color: $background-soft;
+
+    &-title {
+        font-weight: bold;
+        font-size: 1.5rem;
+        color: $title-color;
+    }
+
+    .list-group-item {
+        border: none;
+        padding: $spacing-medium $spacing-large;
+        transition: background 0.3s ease, transform 0.2s ease;
+
+        a {
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: $text-color;
+            display: flex;
+            align-items: center;
+            gap: $spacing-small;
+            transition: color 0.3s ease, transform 0.2s ease;
+
+            i {
+                font-size: 1.3rem;
+                color: $primary-color;
+            }
+
+            &:hover {
+                color: $primary-color;
+                transform: translateX(5px);
+            }
+        }
+
+        &:hover {
+            background: $hover-bg;
+            border-radius: $border-radius;
+        }
+    }
+}

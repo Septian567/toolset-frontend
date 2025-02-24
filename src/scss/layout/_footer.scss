@@ -1,0 +1,7 @@
+@use '../utilities/variables' as *;
+
+footer {
+    background-color: $background-soft;
+    text-align: center;
+    padding: $spacing-medium;
+}

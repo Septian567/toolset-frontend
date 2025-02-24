@@ -1,0 +1,15 @@
+teknik meraba - raba (uncompleted)
+1. buat file index.html
+2. buat fitur pendukungnya dalam satu folder tanpa webpack sampai jadi tampilan yang diinginkan
+3. jadi (projek tidak terstruktur dan berantakan)
+
+
+algoritma membuat website frontend - level 2 (bantuan AI)
+
+1. pasang webpack (lihat contoh konfigurasi)
+2. lihat konfigurasi webpack
+3. index.html sebagai pusat
+4. fitur lain seperti css, js, sass, di import di index.js
+5. awal - awal kembangkan dulu index.html
+6. lalu perbaiki struktur kodenya
+7. mulai buat components satu persatu (trial error lama sekali)

@@ -1,0 +1,59 @@
+body {
+    padding-top: 60px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.content {
+    flex: 1;
+}
+
+footer {
+    background-color: #f8f9fa;
+    text-align: center;
+    padding: 10px;
+}
+
+
+.card {
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    
+    &-img-top {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+}
+
+.delete-btn {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+
+    i {
+        font-size: 1.2rem;
+        color: black;
+        transition: color 0.3s;
+    }
+
+    &:hover i {
+        color: red;
+    }
+}
+
+@media (max-width: 576px) {
+    .modal-dialog {
+        margin: 15% auto !important;
+        // Menambahkan lebih banyak margin atas
+        transform: translateY(0) !important;
+        // Memastikan modal tetap di posisi atas
+    }
+}

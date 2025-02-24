@@ -1,0 +1,26 @@
+@use '../utilities/variables' as *;
+@use '../utilities/mixins' as *;
+
+.delete-btn {
+    position: absolute;
+    bottom: $spacing-small;
+    right: $spacing-small;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+
+    i {
+        font-size: 1.2rem;
+        color: $black;
+        @include hover-effect($red);
+    }
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: $primary-color;
+    cursor: pointer;
+    @include hover-effect(#0056b3);
+}

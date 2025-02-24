@@ -1,0 +1,33 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.card {
+    border-radius: $border-radius;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    &-img-top {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .delete-btn {
+        position: absolute;
+        bottom: 8px;
+        right: 8px;
+        @include button-reset;
+
+        i {
+            font-size: 1.2rem;
+            color: black;
+            transition: color 0.3s;
+        }
+
+        &:hover i {
+            color: red;
+        }
+    }
+}

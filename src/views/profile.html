@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile - Story App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+</head>
+
+<body>
+    <navbar-component></navbar-component>
+    <menu-offcanvas></menu-offcanvas>
+
+    <!-- Konten Utama -->
+    <div class="content container mt-4">
+        <h1 class="text-center mb-4">Profile</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <!-- Profile Card -->
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <!-- Profile Header -->
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <!-- Profile Image -->
+                            <div class="position-relative">
+                                <img id="profileImage" src="person.jpeg" alt="Foto Profil" class="rounded-circle"
+                                    style="width: 100px; height: 100px; object-fit: cover" />
+                                <!-- Edit Image Button -->
+                                <button class="btn btn-light btn-sm position-absolute bottom-0 end-0"
+                                    id="changeImageBtn" title="Ganti Foto">
+                                    <i class="fas fa-camera"></i>
+                                </button>
+                            </div>
+                            <!-- Edit Profile Button -->
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editProfileModal"
+                                title="Edit Profile">
+                                <i class="fas fa-edit"></i> Edit Profile
+                            </button>
+                        </div>
+
+                        <!-- File Input (Hidden) -->
+                        <input type="file" id="uploadImage" class="form-control d-none" accept="image/*" />
+
+                        <!-- Profile Description -->
+                        <profile-description></profile-description>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Profile Modal -->
+<!-- Edit Profile Modal -->
+<div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Profile</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Form dengan Validasi Bootstrap -->
+                <form id="editProfileForm" class="needs-validation" novalidate>
+                    <div class="mb-3">
+                        <label for="editName" class="form-label">Nama</label>
+                        <input type="text" id="editName" class="form-control" required />
+                        <div class="invalid-feedback">Nama tidak boleh kosong.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editHobby" class="form-label">Hobi</label>
+                        <input type="text" id="editHobby" class="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="editJob" class="form-label">Pekerjaan</label>
+                        <input type="text" id="editJob" class="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="editField" class="form-label">Bidang Kerja</label>
+                        <input type="text" id="editField" class="form-control" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    Batal
+                </button>
+                <button type="button" class="btn btn-primary" id="saveProfileBtn">
+                    Simpan
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Footer -->
+    <footer-component></footer-component>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- <script>
+        document.addEventListener("DOMContentLoaded",function() {
+            const editProfileForm=document.getElementById("editProfileForm");
+            const saveProfileBtn=document.getElementById("saveProfileBtn");
+
+            // Event listener untuk tombol "Simpan"
+            saveProfileBtn.addEventListener("click",function() {
+                // Cek validitas form
+                if(!editProfileForm.checkValidity()) {
+                    // Jika form tidak valid, tampilkan pesan error
+                    editProfileForm.classList.add("was-validated");
+                    return;
+                }
+
+                // Jika form valid, simpan data
+                const profile={
+                    name: document.getElementById("editName").value,
+                    hobby: document.getElementById("editHobby").value,
+                    job: document.getElementById("editJob").value,
+                    field: document.getElementById("editField").value,
+                };
+
+                // Simpan data ke local storage
+                localStorage.setItem("profileData",JSON.stringify(profile));
+
+                // Perbarui tampilan profil
+                const profileDescription=document.querySelector("profile-description");
+                if(profileDescription) {
+                    profileDescription.name=profile.name;
+                    profileDescription.hobby=profile.hobby;
+                    profileDescription.job=profile.job;
+                    profileDescription.field=profile.field;
+                }
+
+                // Tutup modal
+                const modal=bootstrap.Modal.getInstance(
+                    document.getElementById("editProfileModal")
+                );
+                modal.hide();
+            });
+
+            // Event listener untuk membuka modal (isi form dengan data saat ini)
+            document
+                .querySelector('[data-bs-target="#editProfileModal"]')
+                .addEventListener("click",function() {
+                    const profileData=
+                        JSON.parse(localStorage.getItem("profileData"))||{};
+                    document.getElementById("editName").value=profileData.name||"";
+                    document.getElementById("editHobby").value=profileData.hobby||"";
+                    document.getElementById("editJob").value=profileData.job||"";
+                    document.getElementById("editField").value=profileData.field||"";
+                });
+        });
+    </script> -->
+</body>
+
+</html>

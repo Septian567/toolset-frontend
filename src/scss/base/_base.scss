@@ -1,0 +1,15 @@
+@use '../utilities/variables' as *;
+@use '../utilities/mixins' as *;
+
+body {
+    padding-top: 60px;
+    @include flex-column;
+    min-height: 100vh;
+    background-color: $background-soft;
+    overflow-x: hidden;
+    max-width: 100vw;
+}
+
+.content {
+    flex: 1;
+}

@@ -1,0 +1,8 @@
+@use '../utilities/variables' as *;
+
+@media (max-width: $breakpoint-sm) {
+    .modal-dialog {
+        margin: 15% auto !important;
+        transform: translateY(0) !important;
+    }
+}

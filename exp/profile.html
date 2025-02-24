@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Story App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        html,
+        body {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            background-color: #f0f2f5;
+            overflow-x: hidden;
+            /* Mencegah geser horizontal */
+            max-width: 100vw;
+            /* Mencegah lebar melebihi viewport */
+        }
+
+        .content {
+            flex: 1;
+        }
+
+        footer {
+            background-color: #f8f9fa;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .profile-card {
+            max-width: 600px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: flex-end;
+            gap: 15px;
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 2px solid black;
+        }
+
+        .profile-img-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .edit-btn-container {
+            display: flex;
+            align-items: flex-end;
+            gap: 10px;
+        }
+
+        .profile-description {
+            margin-top: 20px;
+            margin-left: 20px;
+        }
+
+        /* Agar modal berada di atas dengan margin */
+        .modal-dialog {
+            margin-top: 10vh;
+            /* Memberikan margin atas */
+        }
+
+        .icon-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #007bff;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .icon-btn:hover {
+            color: #0056b3;
+        }
+    </style>
+</head>
+
+<body onload="loadProfileImage()">
+    <nav class="navbar navbar-dark bg-primary">
+        <div class="container-fluid">
+            <button class="btn btn-light" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu">☰ Menu</button>
+            <span class="navbar-brand mx-auto">Story App</span>
+        </div>
+    </nav>
+
+    <div class="offcanvas offcanvas-start" id="offcanvasMenu">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title">Menu</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="list-group">
+                <li class="list-group-item"><a href="index.html">Dashboard</a></li>
+                <li class="list-group-item"><a href="profile.html">Profile</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container mt-4 content">
+        <h1 class="text-center">Profile</h1>
+        <div class="profile-card">
+            <div class="profile-header">
+                <div class="profile-img-container">
+                    <img id="profileImage" src="person.jpeg" alt="Foto Profil" class="profile-img">
+                </div>
+                <div class="edit-btn-container">
+                    <button class="icon-btn" onclick="document.getElementById('uploadImage').click()"
+                        title="Ganti Foto">
+                        <i class="fas fa-camera"></i>
+                    </button>
+                    <button class="icon-btn" data-bs-toggle="modal" data-bs-target="#editProfileModal"
+                        title="Edit Profile">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                </div>
+            </div>
+
+            <input type="file" id="uploadImage" class="form-control d-none" accept="image/*"
+                onchange="changeProfileImage(event)">
+
+            <div class="profile-description">
+                <h3 id="name">John Doe</h3>
+                <p><strong>Hobi:</strong> <span id="hobby">Fotografi, Membaca</span></p>
+                <p><strong>Pekerjaan:</strong> <span id="job">Software Engineer</span></p>
+                <p><strong>Bidang Kerja:</strong> <span id="field">Pengembangan Web</span></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Profile</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <label class="form-label">Nama</label>
+                    <input type="text" id="editName" class="form-control">
+                    <label class="form-label mt-2">Hobi</label>
+                    <input type="text" id="editHobby" class="form-control">
+                    <label class="form-label mt-2">Pekerjaan</label>
+                    <input type="text" id="editJob" class="form-control">
+                    <label class="form-label mt-2">Bidang Kerja</label>
+                    <input type="text" id="editField" class="form-control">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="button" class="btn btn-primary" onclick="saveProfile()">Simpan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p class="mb-0">© 2025 Story App. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function saveProfile() {
+            document.getElementById('name').innerText=document.getElementById('editName').value;
+            document.getElementById('hobby').innerText=document.getElementById('editHobby').value;
+            document.getElementById('job').innerText=document.getElementById('editJob').value;
+            document.getElementById('field').innerText=document.getElementById('editField').value;
+            var modal=bootstrap.Modal.getInstance(document.getElementById('editProfileModal'));
+            modal.hide();
+        }
+
+        function changeProfileImage(event) {
+            const file=event.target.files[0];
+            if(file) {
+                const reader=new FileReader();
+                reader.onload=function(e) {
+                    document.getElementById('profileImage').src=e.target.result;
+                    localStorage.setItem("profileImage",e.target.result);
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function loadProfileImage() {
+            const savedImage=localStorage.getItem("profileImage");
+            if(savedImage) {
+                document.getElementById('profileImage').src=savedImage;
+            }
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

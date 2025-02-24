@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Story App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        @media (max-width: 576px) {
+            .modal-dialog {
+                margin: 15% auto !important;
+                /* Menambahkan lebih banyak margin atas */
+                transform: translateY(0) !important;
+                /* Memastikan modal tetap di posisi atas */
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-dark bg-primary fixed-top">
+        <div class="container-fluid">
+            <button class="btn btn-light" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu">☰ Menu</button>
+            <span class="navbar-brand mx-auto">Story App</span>
+        </div>
+    </nav>
+
+    <div class="offcanvas offcanvas-start" id="offcanvasMenu">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title">Menu</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="list-group">
+                <li class="list-group-item"><a href="index.html">Dashboard</a></li>
+                <li class="list-group-item"><a href="profile.html">Profile</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container mt-4 content">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="m-0">Dashboard</h1>
+            <a href="AddStory.html" class="btn btn-primary btn-lg text-white d-flex align-items-center">
+                <i class="fa-solid fa-plus me-2 text-white"></i> Tambah Story
+            </a>
+        </div>
+        <div class="row" id="story-container"></div>
+    </div>
+
+    <footer>
+        <p class="mb-0">© 2025 Story App. All Rights Reserved.</p>
+    </footer>
+
+    <div class="modal fade" id="storyModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <img id="modalImage" class="img-fluid rounded mb-3" alt="">
+                    <p id="modalDescription"></p>
+                    <small class="text-muted" id="modalDate"></small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
