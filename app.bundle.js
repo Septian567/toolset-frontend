@@ -169,7 +169,7 @@
       431: () => {
         document.addEventListener("DOMContentLoaded", function () {
           var t = localStorage.getItem("token"),
-            e = ["/dist/auth/login.html", "/auth/register.html"],
+            e = ["/auth/login.html", "/auth/register.html"],
             n = window.location.pathname;
           return t || e.includes(n)
             ? t && e.includes(n)
@@ -184,7 +184,7 @@
               : (alert("Anda tidak memiliki akses ke halaman ini."),
                 void (window.location.href = "/index.html"))
             : (alert("Anda harus login terlebih dahulu."),
-              void (window.location.href = "/dist/auth/login.html"));
+              void (window.location.href = "/auth/login.html"));
         });
       },
       533: () => {
@@ -2009,7 +2009,7 @@
                                           "Password harus terdiri dari minimal 8 karakter.")
                                       : (a.textContent = h.data.message)
                                     : (window.location.href =
-                                        "/dist/auth/login.html"),
+                                        "/auth/login.html"),
                                     (t.next = 29);
                                   break;
                                 case 25:
@@ -7158,7 +7158,7 @@
               value: function () {
                 localStorage.removeItem("token"),
                   alert("Anda telah logout."),
-                  (window.location.href = "/dist/auth/login.html");
+                  (window.location.href = "/auth/login.html");
               },
             },
             {
@@ -7182,7 +7182,7 @@
                     : ct(
                         no ||
                           (no = io([
-                            '<a href="/dist/auth/login.html"\n                    ><i class="bi bi-box-arrow-in-right"></i> Masuk</a\n                  >',
+                            '<a href="/auth/login.html"\n                    ><i class="bi bi-box-arrow-in-right"></i> Masuk</a\n                  >',
                           ]))
                       )
                 );
