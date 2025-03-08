@@ -1,0 +1,10 @@
+[build]
+  publish = "public"
+
+[context.production]
+  command = "echo 'Netlify Pretty URLs disabled'"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Pretty-Urls = "false"
